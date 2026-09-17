@@ -9,6 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Editorial Black & Cream Tokens
+        cream: '#efeee9',
         // Warm Medical Luxury Tokens
         'brand-base': '#FAF8F5',
         'brand-surface': '#FFFFFF',
@@ -22,15 +24,16 @@ const config: Config = {
         'brand-beige': '#F6F2EA',
         'brand-bg': '#FAF8F5',
         'brand-text-muted': '#6E655F',
-        // Optics tokens (preserved for compatibility during redesign)
+        // Optics tokens
         'optic-dark': '#151210',
         'optic-slate': '#1E1916',
         'optic-gold': '#D4AF37',
         'optic-cyan': '#38BDF8',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'Georgia', 'serif'],
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        hn: ['"Helvetica Neue ME"', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['"Helvetica Neue ME"', 'Playfair Display', 'Georgia', 'serif'],
+        sans: ['"Helvetica Neue ME"', 'Plus Jakarta Sans', 'Helvetica', 'Arial', 'sans-serif'],
       },
       animation: {
         'shimmer-spin': 'shimmer-spin 3s linear infinite',

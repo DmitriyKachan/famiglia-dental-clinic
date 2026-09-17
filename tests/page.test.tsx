@@ -3,39 +3,37 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Home from '../src/app/page';
 
-describe('Warm Medical Luxury Full Page Integration', () => {
-  it('renders all luxury sections, narrative flow, and anchors on homepage', () => {
+describe('Editorial Black & Cream Full Page Integration', () => {
+  it('renders single full-viewport hero composition with marquee, cream rule, and chrome', () => {
     const html = renderToString(<Home />);
-    
-    // 1. Header & Brand Identity
+
+    // 1. Single full-viewport hero
+    expect(html).toContain('h-[100dvh]');
+    expect(html).toContain('overflow-hidden');
+    expect(html).toContain('font-hn');
+
+    // 2. Brand Identity & Header
     expect(html).toContain('Famiglia');
+    expect(html).toContain('2025');
+    expect(html).toContain('Послуги');
+    expect(html).toContain('Кейси');
+    expect(html).toContain('Запис');
+
+    // 3. Layering & Marquee
+    expect(html).toContain('marquee');
+    expect(html).toContain('Tetiana');
+    expect(html).toContain('Bybis');
+    expect(html).toContain('anim-line');
+    expect(html).toContain('anim-fade-in');
+    expect(html).toContain('anim-rise-in');
+
+    // 4. Footers & Contacts
     expect(html).toContain('Стоматологія твоєї сімʼї');
+    expect(html).toContain('Тетяна Бибіс');
     expect(html).toContain('+380 96 088 9889');
 
-    // 2. Key Section Anchors
-    expect(html).toContain('id="services"');
-    expect(html).toContain('id="cases"');
-    expect(html).toContain('id="results"');
-    expect(html).toContain('id="about"');
-    expect(html).toContain('id="booking"');
-    expect(html).toContain('id="reviews"');
-    expect(html).toContain('id="contacts"');
-
-    // 3. Human Warmth & Clinical Excellence
-    expect(html).toContain('Тетяна Бибіс');
-    expect(html).toContain('вул. Бойківська, 2');
-    expect(html).toContain('@famiglia_2022');
-    expect(html).toContain('100% без болю');
-    expect(html).toContain('Стерильність класу B');
-    expect(html).toContain('Дентальний мікроскоп 20x');
-
-    // 4. Mobile Sticky Bar & Actions
-    expect(html).toContain('aria-label="Mobile Sticky Bar"');
-    expect(html).toContain('tel:+380960889889');
-
-    // 5. Verification: NO dark sci-fi / 3D cyberpunk artifacts remain
-    expect(html).not.toContain('id="mirror-inspection"');
-    expect(html).not.toContain('3.5x ZOOM');
-    expect(html).not.toContain('bg-[#151210]');
+    // 5. Verification: 3D interactive element removed as requested
+    expect(html).not.toContain('ІНТЕРАКТИВНИЙ 3D-ДОСВІД');
+    expect(html).not.toContain('InteractiveTooth3D');
   });
 });

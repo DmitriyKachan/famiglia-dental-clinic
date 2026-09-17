@@ -1,70 +1,52 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { I18nProvider } from '@/lib/i18n/context';
-import { Header } from '@/components/Header';
-import { Hero } from '@/components/Hero';
-import { TrustBar } from '@/components/TrustBar';
-import { Services } from '@/components/Services';
-import { SmileMatcher } from '@/components/SmileMatcher';
-import { BeforeAfter } from '@/components/BeforeAfter';
-import { InteractiveTooth3D } from '@/components/InteractiveTooth3D';
-import { AboutDoctor } from '@/components/AboutDoctor';
-import { Reviews } from '@/components/Reviews';
-import { BookingForm } from '@/components/BookingForm';
-import { LocationFooter } from '@/components/LocationFooter';
-import { MobileStickyBar } from '@/components/MobileStickyBar';
-import { BookingModal } from '@/components/BookingModal';
-import { AmbientGlow } from '@/components/AmbientGlow';
+import { EditorialHero } from '@/components/EditorialHero';
+import { EditorialServicesDrawer } from '@/components/EditorialServicesDrawer';
+import { EditorialCasesDrawer } from '@/components/EditorialCasesDrawer';
+import { EditorialBookingModal } from '@/components/EditorialBookingModal';
 
 export default function Home() {
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isCasesOpen, setIsCasesOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [preselectedService, setPreselectedService] = useState('');
+
+  const handleSelectService = (service: string) => {
+    setPreselectedService(service);
+    setIsBookingOpen(true);
+  };
+
   return (
     <I18nProvider initialLocale="ua">
-      <div className="min-h-screen bg-brand-base text-brand-dark selection:bg-brand-gold/30 selection:text-brand-dark relative font-sans">
-        {/* Navigation Header */}
-        <Header />
+      <main className="h-[100dvh] w-full overflow-hidden bg-[#0d0d0d] text-cream relative font-hn">
+        {/* Single Full-Viewport Editorial Hero Composition */}
+        <EditorialHero
+          onOpenServices={() => setIsServicesOpen(true)}
+          onOpenCases={() => setIsCasesOpen(true)}
+          onOpenBooking={() => setIsBookingOpen(true)}
+        />
 
-        <main>
-          {/* Section 1: Warm Hero with Dr. Tetiana Bybis */}
-          <Hero />
+        {/* Option 1: Editorial Slide-Over Drawers & Booking Sheet */}
+        <EditorialServicesDrawer
+          isOpen={isServicesOpen}
+          onClose={() => setIsServicesOpen(false)}
+          onSelectService={handleSelectService}
+        />
 
-          {/* Section 2: Four Comfort & Trust Pillars */}
-          <TrustBar />
+        <EditorialCasesDrawer
+          isOpen={isCasesOpen}
+          onClose={() => setIsCasesOpen(false)}
+          onOpenBooking={() => setIsBookingOpen(true)}
+        />
 
-          {/* Section 3: Transparent Services & Pricing */}
-          <Services />
-
-          {/* Section 4: Interactive Smile Matcher (Personalized Goal Selector) */}
-          <SmileMatcher />
-
-          {/* Section 5: Clinical Cases (Before & After with Doctor's Notes) */}
-          <BeforeAfter />
-
-          {/* Section 5: Interactive 3D Digital Smile & Anatomy Experience */}
-          <InteractiveTooth3D />
-
-          {/* Section 6: Doctor Philosophy & Clinic Atmosphere */}
-          <AboutDoctor />
-
-          {/* Section 6: Verified Patient Reviews */}
-          <Reviews />
-
-          {/* Section 7: Online Booking Form */}
-          <BookingForm />
-        </main>
-
-        {/* Location & Navigation Footer */}
-        <LocationFooter />
-
-        {/* Mobile Sticky Quick Action Bar */}
-        <MobileStickyBar />
-
-        {/* Accessible Booking Modal Dialog */}
-        <BookingModal />
-
-        {/* Ambient Cursor Light & Atmosphere */}
-        <AmbientGlow />
-      </div>
+        <EditorialBookingModal
+          isOpen={isBookingOpen}
+          onClose={() => setIsBookingOpen(false)}
+          preselectedService={preselectedService}
+        />
+      </main>
     </I18nProvider>
   );
 }
