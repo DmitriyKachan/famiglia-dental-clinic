@@ -1,53 +1,57 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { I18nProvider } from '@/lib/i18n/context';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
-import { KineticManifesto } from '@/components/KineticManifesto';
-import { PrecisionMirror3D } from '@/components/PrecisionMirror3D';
 import { TrustBar } from '@/components/TrustBar';
 import { Services } from '@/components/Services';
 import { BeforeAfter } from '@/components/BeforeAfter';
 import { AboutDoctor } from '@/components/AboutDoctor';
-import { BookingForm } from '@/components/BookingForm';
 import { Reviews } from '@/components/Reviews';
+import { BookingForm } from '@/components/BookingForm';
 import { LocationFooter } from '@/components/LocationFooter';
+import { MobileStickyBar } from '@/components/MobileStickyBar';
+import { BookingModal } from '@/components/BookingModal';
 
 export default function Home() {
   return (
     <I18nProvider initialLocale="ua">
-      <div className="min-h-screen bg-[#151210] text-[#F7F4EE] selection:bg-[#D4AF37]/40 selection:text-white">
+      <div className="min-h-screen bg-brand-base text-brand-dark selection:bg-brand-gold/30 selection:text-brand-dark relative font-sans">
+        {/* Navigation Header */}
         <Header />
+
         <main>
-          {/* Act 1: Dimensional 3D Layered Hero */}
+          {/* Section 1: Warm Hero with Dr. Tetiana Bybis */}
           <Hero />
 
-          {/* Act 2: Precision Manifesto & Metrics */}
-          <KineticManifesto />
-
-          {/* Act 3: Signature Move — 3D Precision Dental Mirror */}
-          <PrecisionMirror3D />
-
-          {/* Trust Bar telemetry */}
+          {/* Section 2: Four Comfort & Trust Pillars */}
           <TrustBar />
 
-          {/* Act 4: Spatial 3D Service Deck */}
+          {/* Section 3: Transparent Services & Pricing */}
           <Services />
 
-          {/* Act 5: Cinematic Smile Curtain (Before & After) */}
+          {/* Section 4: Clinical Cases (Before & After with Doctor's Notes) */}
           <BeforeAfter />
 
-          {/* Founder & Clinical Atmosphere */}
+          {/* Section 5: Doctor Philosophy & Clinic Atmosphere */}
           <AboutDoctor />
 
-          {/* Act 6: Tactile Booking Station */}
-          <BookingForm />
-
-          {/* Social Proof & Patient Reviews */}
+          {/* Section 6: Verified Patient Reviews */}
           <Reviews />
+
+          {/* Section 7: Online Booking Form */}
+          <BookingForm />
         </main>
+
+        {/* Location & Navigation Footer */}
         <LocationFooter />
+
+        {/* Mobile Sticky Quick Action Bar */}
+        <MobileStickyBar />
+
+        {/* Accessible Booking Modal Dialog */}
+        <BookingModal />
       </div>
     </I18nProvider>
   );
