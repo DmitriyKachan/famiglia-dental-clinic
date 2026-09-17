@@ -1,24 +1,69 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+/* 3D Transform Utilities */
+.perspective-1000 {
+  perspective: 1000px;
 }
 
-body {
-  background-color: #FBF9F5;
-  color: #2D241E;
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.perspective-1200 {
+  perspective: 1200px;
 }
 
-/* Custom utility for subtle gold glows */
-.gold-glow {
-  box-shadow: 0 4px 20px -2px rgba(197, 168, 128, 0.25);
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* High-Tech Optics Laser Grid Pattern */
+.bg-laser-grid {
+  background-image: 
+    linear-gradient(to right, rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Sapphire Glass & Frost Effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(234, 223, 207, 0.8);
+}
+
+.glass-panel-dark {
+  background: rgba(30, 25, 22, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FBF9F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EADFCF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A880;
 }

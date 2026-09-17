@@ -13,7 +13,7 @@ describe('Services, BeforeAfter and AboutDoctor components', () => {
         <Services />
       </I18nProvider>
     );
-    expect(html).toContain('Напрямки лікування');
+    expect(html).toContain('НАПРЯМКИ ЛІКУВАННЯ');
     expect(html).toContain('Ортодонтія');
     expect(html).toContain('Дитяча стоматологія 🧸');
     expect(html).toContain('від 1 500 ₴');
@@ -25,7 +25,8 @@ describe('Services, BeforeAfter and AboutDoctor components', () => {
         <BeforeAfter />
       </I18nProvider>
     );
-    expect(html).toContain('Галерея робіт');
+    expect(html).toContain('РЕАЛЬНІ КЕЙСИ');
+    expect(html).toContain('Результати лікування');
     expect(html).toContain('Естетична реставрація');
     expect(html).toContain('Ортодонтія');
     expect(html).toContain('Відбілювання');

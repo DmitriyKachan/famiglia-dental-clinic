@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss';
+﻿import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -15,6 +15,15 @@ const config: Config = {
         'brand-bg': '#FBF9F5',
         'brand-surface': '#FFFFFF',
         'brand-text-muted': '#6E6259',
+        // High-Tech Optics & 3D Redesign Tokens
+        'optic-dark': '#151210',
+        'optic-slate': '#1E1916',
+        'optic-gold': '#D4AF37',
+        'optic-cyan': '#38BDF8',
+      },
+      fontFamily: {
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

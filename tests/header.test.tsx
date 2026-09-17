@@ -24,9 +24,9 @@ describe('Header, Hero and TrustBar components', () => {
         <Hero />
       </I18nProvider>
     );
-    expect(html).toContain('Творимо здорові та щасливі усмішки');
+    expect(html).toContain('ювелірної');
     expect(html).toContain('Записатися на прийом');
-    expect(html).toContain('Наші послуги');
+    expect(html).toContain('3D Інспекція усмішки');
   });
 
   it('renders TrustBar with statistics', () => {
@@ -47,6 +47,6 @@ describe('Header, Hero and TrustBar components', () => {
       </I18nProvider>
     );
     expect(html).toContain('Book an Appointment');
-    expect(html).toContain('Our Services');
+    expect(html).toContain('3D Smile Inspection');
   });
 });
