@@ -78,7 +78,7 @@ describe('i18n Translations Dictionary', () => {
     expect(translations.en.hero.subtitle).toBe('Painless, tranquil, and aesthetic dental care for the whole family by Dr. Tetiana Bybis.');
     expect(translations.ua.hero.ctaBooking).toBe('Записатися на прийом');
     expect(translations.ua.hero.ctaServices).toBe('Послуги та ціни');
-    expect(translations.ua.hero.ratingValue).toBe('4.9');
+    expect(translations.ua.hero.ratingValue).toBe('5.0');
     expect(translations.ua.hero.ratingCount).toBe('500+ оцінок');
     expect(translations.ua.hero.founderBadge).toBe('Тетяна Бибіс • Головний лікар');
     expect(translations.ua.hero.experienceBadge).toBe('15+ років практики');

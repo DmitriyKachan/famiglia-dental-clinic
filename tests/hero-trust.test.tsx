@@ -39,6 +39,7 @@ describe('Hero and TrustBar Components', () => {
 
       // Trust metrics & rating
       expect(html).toContain(translations.ua.hero.ratingValue);
+      expect(html).toContain('5.0');
       expect(html).toContain(translations.ua.hero.ratingCount);
       expect(html).toContain(translations.ua.hero.experienceBadge);
 

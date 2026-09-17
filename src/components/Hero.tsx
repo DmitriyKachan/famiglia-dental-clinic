@@ -70,12 +70,12 @@ export const Hero: React.FC = () => {
                   <div className="flex items-center gap-1.5 leading-none">
                     <span className="text-xl font-bold font-serif text-brand-dark">
                       <NumberTicker
-                        value={parseFloat(t.hero.ratingValue) || 4.9}
+                        value={parseFloat(t.hero.ratingValue) || 5.0}
                         decimalPlaces={1}
                       />
                     </span>
                     <span className="text-xs font-semibold text-brand-gold flex items-center gap-0.5">
-                      <span>★</span>
+                      <span className="tracking-tighter">★★★★★</span>
                       <span className="text-brand-dark font-medium ml-1">
                         ({t.hero.ratingValue})
                       </span>
