@@ -1,137 +1,185 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { useI18n } from '@/lib/i18n/context';
-import { Award, Heart, Shield, ArrowRight } from 'lucide-react';
+import { Heart, ShieldCheck, Home, Sparkles, ArrowRight } from 'lucide-react';
 import { InstagramIcon } from '@/components/Icons';
+import { BlurFade } from '@/components/magicui/BlurFade';
 
 export const AboutDoctor: React.FC = () => {
   const { t, locale } = useI18n();
 
-  const values = [
+  const clinicValues = [
     {
       icon: Heart,
-      title: locale === 'ua' ? 'Турбота як про рідних' : 'Care like family',
-      desc: locale === 'ua' ? 'Кожен візит починається зі щирої бесіди, уважного вислуховування та комфортної атмосфери.' : 'Every visit begins with sincere conversation, careful listening and a cozy atmosphere.',
+      title: locale === 'ua' ? '100% Безболісність та комфорт' : '100% Painless & Comfort',
+      desc:
+        locale === 'ua'
+          ? 'Компʼютерна анестезія STA без оніміння, максимальна делікатність та спокійна атмосфера.'
+          : 'STA computer-controlled anesthesia without numbness, gentle approach, and complete peace of mind.',
     },
     {
-      icon: Shield,
-      title: locale === 'ua' ? 'Безкомпромісна безпека' : 'Uncompromising safety',
-      desc: locale === 'ua' ? 'Сучасні автоклави класу B, потрійна стерилізація інструментів та одноразові витратні матеріали.' : 'Class B modern autoclaves, triple instrument sterilization and disposable consumables.',
+      icon: ShieldCheck,
+      title:
+        locale === 'ua'
+          ? 'Європейські протоколи та стерильність класу B'
+          : 'European Protocols & Class B Sterility',
+      desc:
+        locale === 'ua'
+          ? 'Багаторівнева стерилізація Melag, індивідуальні крафт-пакети та німецька оптика Carl Zeiss.'
+          : 'Multi-stage Melag autoclaving, sealed individual craft pouches, and Carl Zeiss precision optics.',
     },
     {
-      icon: Award,
-      title: locale === 'ua' ? '15+ років експертизи' : '15+ years expertise',
-      desc: locale === 'ua' ? 'Безперервне навчання у провідних фахівців Європи та застосування сучасних методик лікування.' : 'Continuous learning from leading European experts and adoption of modern treatment protocols.',
+      icon: Home,
+      title:
+        locale === 'ua'
+          ? 'Затишок для всієї родини на вул. Бойківській, 2'
+          : 'Cozy Atmosphere for the Entire Family at 2 Boikivska St',
+      desc:
+        locale === 'ua'
+          ? 'Затишний простір біля парку, адаптаційні візити для дітей без сліз та турбота про кожного.'
+          : 'Tranquil space near park greenery, tear-free pediatric dental care, and care for every family member.',
     },
   ];
 
   return (
-    <section id="about" className="py-24 bg-[#FBF9F5] scroll-mt-20">
+    <section id="about" className="py-20 lg:py-28 bg-brand-base text-brand-dark scroll-mt-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Founder Photo & Bio Card */}
-          <div className="lg:col-span-5 relative flex justify-center">
-            <div className="relative w-full max-w-md">
-              {/* Decorative background shape */}
-              <div className="absolute -top-6 -left-6 w-full h-full rounded-3xl bg-[#EADFCF]/50 -z-10 -rotate-2" />
-
-              {/* Main Photo Container */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-[#FFFFFF] p-2 border border-[#EADFCF]">
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#2D241E]/10">
+        <BlurFade delay={0.1} duration={0.6}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Visual Column: Doctor & Clinic Space Cards */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Doctor Photo Card */}
+              <div className="relative rounded-3xl overflow-hidden bg-brand-surface p-2.5 border border-brand-border shadow-md">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-brand-base">
                   <img
                     src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
                     alt={t.about.founderName}
-                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover object-top hover:scale-103 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2D241E]/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/85 via-brand-dark/20 to-transparent" />
 
-                  {/* Overlay Name */}
-                  <div className="absolute bottom-5 left-5 right-5 text-white">
-                    <span className="text-xs uppercase tracking-widest text-[#C5A880] font-semibold">
-                      {t.about.founderRole}
+                  {/* Doctor Info Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <span className="inline-block px-3 py-1 rounded-full bg-brand-gold text-[11px] font-semibold tracking-wider uppercase text-brand-dark mb-2 shadow-xs">
+                      {locale === 'ua' ? '15+ років практики' : '15+ years practice'}
                     </span>
-                    <h3 className="text-2xl font-serif font-bold text-white mt-1">
+                    <h3 className="text-2xl font-serif font-bold text-white leading-tight">
                       {t.about.founderName}
                     </h3>
+                    <p className="text-xs text-[#EADFCF] mt-1 font-sans">
+                      {t.about.founderRole}
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Instagram Floating Tag */}
-              <a
-                href="https://www.instagram.com/famiglia_2022"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute -bottom-5 right-4 inline-flex items-center space-x-2.5 px-5 py-3 rounded-full bg-[#FFFFFF] border border-[#EADFCF] shadow-lg hover:shadow-xl hover:scale-105 transition-all text-[#2D241E] cursor-pointer"
-              >
-                <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] flex items-center justify-center text-white">
-                  <InstagramIcon className="w-4 h-4" />
-                </div>
-                <span className="text-xs font-bold tracking-tight">@famiglia_2022</span>
-              </a>
-            </div>
-          </div>
+              {/* Clinic Space Photo Card */}
+              <div className="relative rounded-2xl overflow-hidden bg-brand-surface border border-brand-border shadow-sm p-3">
+                <div className="relative h-48 rounded-xl overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+                    alt={locale === 'ua' ? 'Простір клініки Famiglia' : 'Famiglia Clinic Space'}
+                    className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent" />
 
-          {/* Right Column: Story & Philosophy */}
-          <div className="lg:col-span-7 flex flex-col space-y-6 text-left">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#F6F2EA] border border-[#EADFCF] text-xs font-semibold uppercase tracking-wider text-[#6E6259] w-fit">
-              <span>{locale === 'ua' ? 'Про затишок та покликання' : 'About comfort & purpose'}</span>
-            </div>
+                  <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2">
+                    <div>
+                      <p className="text-[11px] font-semibold text-brand-gold uppercase tracking-wider">
+                        {locale === 'ua' ? 'Простір клініки' : 'Clinic Space'}
+                      </p>
+                      <p className="text-xs font-medium text-white">
+                        {t.about.clinicAddress}
+                      </p>
+                    </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#2D241E] leading-[1.2] tracking-tight">
-              {t.about.title}
-            </h2>
-
-            {/* Founder Quote Card */}
-            <div className="p-6 rounded-2xl bg-[#FFFFFF] border-l-4 border-[#C5A880] border-y border-r border-[#EADFCF] shadow-sm">
-              <p className="text-base sm:text-lg font-serif italic text-[#2D241E] leading-relaxed">
-                «{t.about.quote}»
-              </p>
-              <p className="text-xs font-semibold text-[#C5A880] mt-3 uppercase tracking-wider">
-                — {t.about.founderName}, {locale === 'ua' ? 'засновниця клініки' : 'clinic founder'}
-              </p>
-            </div>
-
-            {/* Body Paragraphs */}
-            <div className="space-y-4 text-sm sm:text-base text-[#6E6259] leading-relaxed font-light">
-              <p>{t.about.descP1}</p>
-              <p>{t.about.descP2}</p>
-            </div>
-
-            {/* Values Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              {values.map((v, i) => {
-                const Icon = v.icon;
-                return (
-                  <div
-                    key={i}
-                    className="p-4 rounded-xl bg-[#FFFFFF] border border-[#EADFCF]/70 shadow-2xs"
-                  >
-                    <Icon className="w-5 h-5 text-[#C5A880] mb-2" />
-                    <h4 className="text-xs font-bold text-[#2D241E] uppercase tracking-wider mb-1">
-                      {v.title}
-                    </h4>
-                    <p className="text-[12px] text-[#6E6259] leading-normal font-light">
-                      {v.desc}
-                    </p>
+                    {/* Instagram Badge */}
+                    <a
+                      href="https://instagram.com/famiglia_2022"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-brand-surface/95 backdrop-blur-xs border border-brand-border shadow-sm hover:shadow-md hover:scale-105 transition-all text-brand-dark shrink-0 cursor-pointer"
+                      aria-label="Instagram @famiglia_2022"
+                    >
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] flex items-center justify-center text-white">
+                        <InstagramIcon className="w-3 h-3" />
+                      </div>
+                      <span className="text-xs font-bold text-brand-dark">@famiglia_2022</span>
+                    </a>
                   </div>
-                );
-              })}
+                </div>
+              </div>
             </div>
 
-            {/* Direct Booking CTA */}
-            <div className="pt-2">
-              <a
-                href="#booking"
-                className="inline-flex items-center space-x-2 text-sm font-semibold text-[#2D241E] hover:text-[#C5A880] transition-colors cursor-pointer group"
-              >
-                <span>{locale === 'ua' ? 'Познайомитися з нами на консультації' : 'Meet us at a consultation'}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+            {/* Right Column: Warm Narrative & Clinic Values */}
+            <div className="lg:col-span-7 flex flex-col space-y-6">
+              {/* Header Badge & Title */}
+              <div>
+                <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-brand-surface border border-brand-border text-xs font-semibold uppercase tracking-wider text-brand-muted mb-3 shadow-xs">
+                  <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
+                  <span>{t.about.title}</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-brand-dark tracking-tight leading-[1.2]">
+                  {t.about.founderName}
+                </h2>
+                <p className="text-brand-gold font-serif text-lg sm:text-xl mt-1 font-medium">
+                  {t.about.founderRole}
+                </p>
+              </div>
+
+              {/* Founder Quote Card */}
+              <div className="p-6 rounded-2xl bg-brand-surface border-l-4 border-brand-gold border-y border-r border-brand-border shadow-sm">
+                <p className="text-base sm:text-lg font-serif italic text-brand-dark leading-relaxed">
+                  {t.about.quote}
+                </p>
+                <p className="text-xs font-semibold text-brand-gold mt-3 uppercase tracking-wider">
+                  — {t.about.founderName}, {t.about.founderRole}
+                </p>
+              </div>
+
+              {/* Bio Paragraphs */}
+              <div className="space-y-4 text-brand-muted text-sm sm:text-base leading-relaxed font-normal">
+                <p>{t.about.bioP1}</p>
+                <p>{t.about.bioP2}</p>
+              </div>
+
+              {/* 3 Clinic Values Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                {clinicValues.map((val, idx) => {
+                  const Icon = val.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="p-5 rounded-2xl bg-brand-surface border border-brand-border shadow-xs hover:border-brand-gold/60 transition-all duration-200 flex flex-col"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-brand-base flex items-center justify-center text-brand-gold mb-3 border border-brand-border shrink-0">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-sm font-bold text-brand-dark font-serif mb-2 leading-snug">
+                        {val.title}
+                      </h4>
+                      <p className="text-xs text-brand-muted leading-relaxed font-light mt-auto">
+                        {val.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Action Link to Consultation */}
+              <div className="pt-2">
+                <a
+                  href="#booking"
+                  className="inline-flex items-center space-x-2 text-sm font-semibold text-brand-dark hover:text-brand-gold transition-colors cursor-pointer group"
+                >
+                  <span>{locale === 'ua' ? 'Познайомитися з нами на консультації' : 'Meet us at a consultation'}</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-brand-gold" />
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </BlurFade>
       </div>
     </section>
   );
