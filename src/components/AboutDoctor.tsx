@@ -5,6 +5,7 @@ import { useI18n } from '@/lib/i18n/context';
 import { Heart, ShieldCheck, Home, Sparkles, ArrowRight } from 'lucide-react';
 import { InstagramIcon } from '@/components/Icons';
 import { BlurFade } from '@/components/magicui/BlurFade';
+import { getAssetPath } from '@/lib/basePath';
 
 export const AboutDoctor: React.FC = () => {
   const { t, locale } = useI18n();
@@ -53,7 +54,7 @@ export const AboutDoctor: React.FC = () => {
               <div className="relative rounded-3xl overflow-hidden bg-brand-surface p-2.5 border border-brand-border shadow-md">
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-brand-base">
                   <img
-                    src="/tetiana_bybis.jpg"
+                    src={getAssetPath('/tetiana_bybis.jpg')}
                     alt={t.about.founderName}
                     loading="lazy"
                     decoding="async"

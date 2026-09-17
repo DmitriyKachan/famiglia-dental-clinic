@@ -73,10 +73,10 @@ export const Services: React.FC = () => {
 
             return (
               <BlurFade key={item.id} delay={0.1 + index * 0.05} className="h-full">
-                <div className="bg-brand-surface border border-brand-border rounded-2xl p-7 hover:border-brand-gold/60 transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between h-full group">
+                <div className="bg-brand-surface border border-brand-border rounded-2xl p-7 hover:border-brand-gold/70 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-2 flex flex-col justify-between h-full group">
                   <div>
                     {/* Icon */}
-                    <div className="w-12 h-12 rounded-xl bg-brand-base border border-brand-border/80 flex items-center justify-center text-brand-gold mb-5 group-hover:scale-105 group-hover:bg-brand-gold/10 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-brand-base border border-brand-border/80 flex items-center justify-center text-brand-gold mb-5 group-hover:scale-110 group-hover:bg-brand-gold/15 transition-all duration-300">
                       <Icon className="w-6 h-6" />
                     </div>
 

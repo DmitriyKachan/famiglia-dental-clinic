@@ -6,13 +6,16 @@ import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { TrustBar } from '@/components/TrustBar';
 import { Services } from '@/components/Services';
+import { SmileMatcher } from '@/components/SmileMatcher';
 import { BeforeAfter } from '@/components/BeforeAfter';
+import { InteractiveTooth3D } from '@/components/InteractiveTooth3D';
 import { AboutDoctor } from '@/components/AboutDoctor';
 import { Reviews } from '@/components/Reviews';
 import { BookingForm } from '@/components/BookingForm';
 import { LocationFooter } from '@/components/LocationFooter';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
 import { BookingModal } from '@/components/BookingModal';
+import { AmbientGlow } from '@/components/AmbientGlow';
 
 export default function Home() {
   return (
@@ -31,10 +34,16 @@ export default function Home() {
           {/* Section 3: Transparent Services & Pricing */}
           <Services />
 
-          {/* Section 4: Clinical Cases (Before & After with Doctor's Notes) */}
+          {/* Section 4: Interactive Smile Matcher (Personalized Goal Selector) */}
+          <SmileMatcher />
+
+          {/* Section 5: Clinical Cases (Before & After with Doctor's Notes) */}
           <BeforeAfter />
 
-          {/* Section 5: Doctor Philosophy & Clinic Atmosphere */}
+          {/* Section 5: Interactive 3D Digital Smile & Anatomy Experience */}
+          <InteractiveTooth3D />
+
+          {/* Section 6: Doctor Philosophy & Clinic Atmosphere */}
           <AboutDoctor />
 
           {/* Section 6: Verified Patient Reviews */}
@@ -52,6 +61,9 @@ export default function Home() {
 
         {/* Accessible Booking Modal Dialog */}
         <BookingModal />
+
+        {/* Ambient Cursor Light & Atmosphere */}
+        <AmbientGlow />
       </div>
     </I18nProvider>
   );

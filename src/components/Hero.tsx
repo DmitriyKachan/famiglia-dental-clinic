@@ -1,20 +1,61 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { MapPin, ArrowRight, Star, Award, HeartHandshake } from 'lucide-react';
 import { ShimmerButton } from '@/components/magicui/ShimmerButton';
 import { NumberTicker } from '@/components/magicui/NumberTicker';
 import { BlurFade } from '@/components/magicui/BlurFade';
+import { getAssetPath } from '@/lib/basePath';
 
 export const Hero: React.FC = () => {
   const { t, locale } = useI18n();
-  const [imgSrc, setImgSrc] = useState('/tetiana_bybis.jpg');
+  const [imgSrc, setImgSrc] = useState(getAssetPath('/tetiana_bybis.jpg'));
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth - 0.5) * 2; // -1 to 1
+      const y = (e.clientY / innerHeight - 0.5) * 2; // -1 to 1
+      setMousePos({ x, y });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  // Parallax offsets
+  const bgOffsetY = scrollY * 0.15;
+  const cardOffsetY = scrollY * 0.05;
+  const badge1Offset = {
+    x: mousePos.x * -12,
+    y: mousePos.y * -10 - scrollY * 0.08,
+  };
+  const badge2Offset = {
+    x: mousePos.x * 14,
+    y: mousePos.y * 12 + scrollY * 0.06,
+  };
 
   return (
     <section className="relative pt-10 pb-12 sm:pt-12 md:pt-14 md:pb-20 overflow-hidden bg-brand-base text-brand-dark">
-      {/* Ambient Warm Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-tr from-brand-gold/10 via-brand-beige/40 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
+      {/* Ambient Warm Glow with Parallax */}
+      <div
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-tr from-brand-gold/10 via-brand-beige/40 to-transparent rounded-full blur-[120px] pointer-events-none -z-10 transition-transform duration-300 ease-out"
+        style={{
+          transform: `translate3d(-50%, ${bgOffsetY}px, 0) scale(${1 + Math.abs(mousePos.x) * 0.05})`,
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -23,8 +64,8 @@ export const Hero: React.FC = () => {
           {/* ========================================================================= */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6 sm:space-y-8 text-left">
             {/* Location Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-medium text-brand-muted shadow-xs">
-              <MapPin className="w-4 h-4 text-brand-gold shrink-0" />
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-medium text-brand-muted shadow-xs hover:border-brand-gold/50 transition-all duration-300 cursor-default">
+              <MapPin className="w-4 h-4 text-brand-gold shrink-0 animate-bounce" />
               <span>{t.hero.badge}</span>
             </div>
 
@@ -42,18 +83,18 @@ export const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-2">
               <a href="#booking" className="inline-block cursor-pointer">
                 <ShimmerButton
-                  className="w-full sm:w-auto px-8 py-4 text-base font-semibold shadow-md hover:shadow-lg"
+                  className="w-full sm:w-auto px-8 py-4 text-base font-semibold shadow-md hover:shadow-xl hover:scale-103 transition-all duration-300"
                   shimmerColor="#C5A880"
                   background="#1E1B18"
                 >
                   <span>{t.hero.ctaBooking}</span>
-                  <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1.5" />
                 </ShimmerButton>
               </a>
 
               <a
                 href="#services"
-                className="inline-flex items-center justify-center px-7 py-4 text-base font-medium text-brand-dark bg-brand-surface border border-brand-border hover:bg-brand-base rounded-full shadow-xs transition-all duration-300 cursor-pointer text-center"
+                className="inline-flex items-center justify-center px-7 py-4 text-base font-medium text-brand-dark bg-brand-surface border border-brand-border hover:bg-brand-base hover:border-brand-gold/60 rounded-full shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-center"
               >
                 <span>{t.hero.ctaServices}</span>
               </a>
@@ -62,8 +103,8 @@ export const Hero: React.FC = () => {
             {/* Trust Metrics Row */}
             <div className="pt-6 sm:pt-8 border-t border-brand-border/80 w-full flex flex-wrap items-center gap-6 sm:gap-10">
               {/* Rating Metric */}
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-brand-surface border border-brand-border flex items-center justify-center text-brand-gold shadow-xs">
+              <div className="flex items-center gap-3 group">
+                <div className="w-12 h-12 rounded-2xl bg-brand-surface border border-brand-border flex items-center justify-center text-brand-gold shadow-xs group-hover:scale-110 transition-transform duration-300">
                   <Star className="w-5 h-5 fill-brand-gold text-brand-gold" />
                 </div>
                 <div className="flex flex-col">
@@ -88,8 +129,8 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Practice Metric */}
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-brand-surface border border-brand-border flex items-center justify-center text-brand-gold shadow-xs font-serif font-bold text-base">
+              <div className="flex items-center gap-3 group">
+                <div className="w-12 h-12 rounded-2xl bg-brand-surface border border-brand-border flex items-center justify-center text-brand-gold shadow-xs font-serif font-bold text-base group-hover:scale-110 transition-transform duration-300">
                   15+
                 </div>
                 <div className="flex flex-col">
@@ -116,8 +157,13 @@ export const Hero: React.FC = () => {
               {/* Warm Ambient Blur behind Card */}
               <div className="absolute -inset-4 bg-gradient-to-tr from-brand-gold/20 via-brand-beige/50 to-brand-gold/10 rounded-3xl blur-2xl opacity-70 -z-10" />
 
-              {/* Portrait Container */}
-              <div className="relative rounded-3xl overflow-hidden bg-brand-surface p-3 border border-brand-border shadow-xl">
+              {/* Portrait Container with subtle Tilt */}
+              <div
+                className="relative rounded-3xl overflow-hidden bg-brand-surface p-3 border border-brand-border shadow-xl transition-all duration-300 ease-out"
+                style={{
+                  transform: `translate3d(0, ${cardOffsetY}px, 0) rotateY(${mousePos.x * 4}deg) rotateX(${mousePos.y * -4}deg)`,
+                }}
+              >
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-brand-base">
                   <img
                     src={imgSrc}
@@ -147,7 +193,12 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Floating Badge 1: Founder Badge */}
-              <div className="absolute -top-2 -left-4 sm:-left-6 bg-brand-surface/95 backdrop-blur-md rounded-2xl px-4 py-3 shadow-lg border border-brand-border flex items-center gap-3">
+              <div
+                className="absolute -top-2 -left-4 sm:-left-6 bg-brand-surface/95 backdrop-blur-md rounded-2xl px-4 py-3 shadow-lg border border-brand-border flex items-center gap-3 transition-transform duration-300 ease-out hover:scale-105 cursor-pointer"
+                style={{
+                  transform: `translate3d(${badge1Offset.x}px, ${badge1Offset.y}px, 0)`,
+                }}
+              >
                 <div className="w-10 h-10 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
                   <Award className="w-5 h-5" />
                 </div>
@@ -162,7 +213,12 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Floating Badge 2: Painless Treatment */}
-              <div className="absolute -bottom-4 -right-4 sm:-right-6 bg-brand-surface/95 backdrop-blur-md rounded-2xl px-4 py-3 shadow-lg border border-brand-border flex items-center gap-3">
+              <div
+                className="absolute -bottom-4 -right-4 sm:-right-6 bg-brand-surface/95 backdrop-blur-md rounded-2xl px-4 py-3 shadow-lg border border-brand-border flex items-center gap-3 transition-transform duration-300 ease-out hover:scale-105 cursor-pointer"
+                style={{
+                  transform: `translate3d(${badge2Offset.x}px, ${badge2Offset.y}px, 0)`,
+                }}
+              >
                 <div className="w-10 h-10 rounded-xl bg-brand-sage/15 flex items-center justify-center text-brand-sage shrink-0">
                   <HeartHandshake className="w-5 h-5" />
                 </div>

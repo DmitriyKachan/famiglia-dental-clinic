@@ -4,6 +4,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { useI18n } from '@/lib/i18n/context';
 import { BlurFade } from './magicui/BlurFade';
 import { Sparkles, CheckCircle2, AlertCircle, Calendar, Clock } from 'lucide-react';
+import { getAssetPath } from '@/lib/basePath';
 
 export type CaseTabKey = 'veneers' | 'restoration' | 'whitening';
 
@@ -11,16 +12,16 @@ const CASE_TABS: CaseTabKey[] = ['veneers', 'restoration', 'whitening'];
 
 const CASE_IMAGES: Record<CaseTabKey, { before: string; after: string }> = {
   veneers: {
-    before: '/case_veneers_before.jpg',
-    after: '/case_veneers_after.jpg',
+    before: getAssetPath('/case_veneers_before.jpg'),
+    after: getAssetPath('/case_veneers_after.jpg'),
   },
   restoration: {
-    before: '/case_restoration_before.jpg',
-    after: '/case_restoration_after.jpg',
+    before: getAssetPath('/case_restoration_before.jpg'),
+    after: getAssetPath('/case_restoration_after.jpg'),
   },
   whitening: {
-    before: '/case_whitening_before.jpg',
-    after: '/case_whitening_after.jpg',
+    before: getAssetPath('/case_whitening_before.jpg'),
+    after: getAssetPath('/case_whitening_after.jpg'),
   },
 };
 
@@ -223,6 +224,48 @@ export const BeforeAfter: React.FC = () => {
                   <span className="text-xs font-bold tracking-tight text-brand-gold select-none" aria-hidden="true">&lt;&gt;</span>
                   <span className="sr-only">&lt;&gt;</span>
                 </div>
+              </div>
+
+              {/* Quick Jump Comparison Presets */}
+              <div className="flex items-center justify-between pt-1">
+                <div className="flex items-center space-x-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setSliderPosition(100)}
+                    className={`px-3 py-1 text-xs font-medium rounded-lg transition-all cursor-pointer ${
+                      sliderPosition === 100
+                        ? 'bg-brand-dark text-white shadow-xs'
+                        : 'bg-brand-surface text-brand-muted hover:text-brand-dark border border-brand-border/70'
+                    }`}
+                  >
+                    {locale === 'ua' ? 'Показати «До»' : 'Show Before'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSliderPosition(50)}
+                    className={`px-3 py-1 text-xs font-medium rounded-lg transition-all cursor-pointer ${
+                      sliderPosition === 50
+                        ? 'bg-brand-dark text-white shadow-xs'
+                        : 'bg-brand-surface text-brand-muted hover:text-brand-dark border border-brand-border/70'
+                    }`}
+                  >
+                    50 / 50
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSliderPosition(0)}
+                    className={`px-3 py-1 text-xs font-medium rounded-lg transition-all cursor-pointer ${
+                      sliderPosition === 0
+                        ? 'bg-brand-dark text-white shadow-xs'
+                        : 'bg-brand-surface text-brand-muted hover:text-brand-dark border border-brand-border/70'
+                    }`}
+                  >
+                    {locale === 'ua' ? 'Показати «Після»' : 'Show After'}
+                  </button>
+                </div>
+                <span className="text-[11px] text-brand-muted/80 font-mono">
+                  {Math.round(sliderPosition)}% / {100 - Math.round(sliderPosition)}%
+                </span>
               </div>
             </div>
 

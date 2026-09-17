@@ -47,14 +47,14 @@ export const TrustBar: React.FC = () => {
             return (
               <div
                 key={index}
-                className="bg-brand-surface rounded-2xl p-6 border border-brand-border shadow-sm hover:shadow-md transition-all flex flex-col items-start text-left group"
+                className="bg-brand-surface rounded-2xl p-6 sm:p-7 border border-brand-border shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-brand-gold/50 transition-all duration-300 flex flex-col items-start text-left group cursor-default"
               >
                 <div
-                  className={`w-12 h-12 rounded-xl ${pillar.iconBg} ${pillar.iconColor} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105`}
+                  className={`w-12 h-12 rounded-xl ${pillar.iconBg} ${pillar.iconColor} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}
                 >
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-serif font-bold text-brand-dark tracking-tight mb-2">
+                <h3 className="text-lg font-serif font-bold text-brand-dark tracking-tight mb-2 group-hover:text-brand-gold transition-colors duration-300">
                   {pillar.title}
                 </h3>
                 <p className="text-sm text-brand-muted leading-relaxed font-light">
