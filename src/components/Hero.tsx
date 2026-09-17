@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
   const [imgSrc, setImgSrc] = useState('/tetiana_bybis.jpg');
 
   return (
-    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-brand-base text-brand-dark">
+    <section className="relative pt-10 pb-12 sm:pt-12 md:pt-14 md:pb-20 overflow-hidden bg-brand-base text-brand-dark">
       {/* Ambient Warm Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-tr from-brand-gold/10 via-brand-beige/40 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
@@ -122,6 +122,9 @@ export const Hero: React.FC = () => {
                   <img
                     src={imgSrc}
                     alt={t.hero.founderBadge}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                     onError={() =>
                       setImgSrc(
                         'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80'
@@ -144,7 +147,7 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Floating Badge 1: Founder Badge */}
-              <div className="absolute -top-4 -left-4 sm:-left-6 bg-brand-surface/95 backdrop-blur-md rounded-2xl px-4 py-3 shadow-lg border border-brand-border flex items-center gap-3">
+              <div className="absolute -top-2 -left-4 sm:-left-6 bg-brand-surface/95 backdrop-blur-md rounded-2xl px-4 py-3 shadow-lg border border-brand-border flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
                   <Award className="w-5 h-5" />
                 </div>

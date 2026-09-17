@@ -11,16 +11,16 @@ const CASE_TABS: CaseTabKey[] = ['veneers', 'restoration', 'whitening'];
 
 const CASE_IMAGES: Record<CaseTabKey, { before: string; after: string }> = {
   veneers: {
-    before: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=85',
-    after: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=85',
+    before: '/case_veneers_before.jpg',
+    after: '/case_veneers_after.jpg',
   },
   restoration: {
-    before: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=1200&q=85',
-    after: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=85',
+    before: '/case_restoration_before.jpg',
+    after: '/case_restoration_after.jpg',
   },
   whitening: {
-    before: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=85',
-    after: 'https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=1200&q=85',
+    before: '/case_whitening_before.jpg',
+    after: '/case_whitening_after.jpg',
   },
 };
 
@@ -174,12 +174,14 @@ export const BeforeAfter: React.FC = () => {
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
-                className="relative aspect-[4/3] sm:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-ew-resize select-none border border-brand-border bg-brand-base shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-gold/40"
+                className="relative aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden cursor-ew-resize select-none border border-brand-border bg-brand-base shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-gold/40"
               >
                 {/* After Image (Background layer) */}
                 <img
                   src={images.after}
                   alt={locale === 'ua' ? 'Після лікування' : 'After treatment'}
+                  loading="eager"
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
                 />
                 {/* AFTER Pill */}
@@ -195,6 +197,8 @@ export const BeforeAfter: React.FC = () => {
                   <img
                     src={images.before}
                     alt={locale === 'ua' ? 'До лікування' : 'Before treatment'}
+                    loading="eager"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
                   />
                   {/* BEFORE Pill */}

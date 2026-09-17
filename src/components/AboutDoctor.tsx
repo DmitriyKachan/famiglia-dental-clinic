@@ -53,8 +53,10 @@ export const AboutDoctor: React.FC = () => {
               <div className="relative rounded-3xl overflow-hidden bg-brand-surface p-2.5 border border-brand-border shadow-md">
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-brand-base">
                   <img
-                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                    src="/tetiana_bybis.jpg"
                     alt={t.about.founderName}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-top hover:scale-103 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/85 via-brand-dark/20 to-transparent" />
@@ -78,8 +80,10 @@ export const AboutDoctor: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden bg-brand-surface border border-brand-border shadow-sm p-3">
                 <div className="relative h-48 rounded-xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+                    src="/famiglia_clinic_interior.jpg"
                     alt={locale === 'ua' ? 'Простір клініки Famiglia' : 'Famiglia Clinic Space'}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent" />
