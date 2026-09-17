@@ -211,13 +211,14 @@ export const InteractiveTooth3D: React.FC = () => {
         const deltaX = clientX - prevMouseX;
         const deltaY = clientY - prevMouseY;
         targetRotationY += deltaX * 0.012;
-        targetRotationX += deltaY * 0.008;
+        // Clamp pitch to realistic viewing angle (prevent flipping upside down)
+        targetRotationX = Math.max(-0.35, Math.min(0.35, targetRotationX + deltaY * 0.006));
         prevMouseX = clientX;
         prevMouseY = clientY;
       } else {
         const rect = container.getBoundingClientRect();
         mouseX = ((clientX - rect.left) / rect.width) * 2 - 1;
-        mouseY = -(((clientY - rect.top) / rect.height) * 2 - 1);
+        mouseY = Math.max(-0.5, Math.min(0.5, -(((clientY - rect.top) / rect.height) * 2 - 1)));
       }
     };
 
