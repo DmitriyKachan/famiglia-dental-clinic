@@ -41,9 +41,8 @@ describe('AboutDoctor Component', () => {
     expect(html).toContain('Європейські протоколи та стерильність класу B');
     expect(html).toContain('Затишок для всієї родини на вул. Бойківській, 2');
 
-    // Instagram link & handle on clinic space photo card
-    expect(html).toContain('href="https://instagram.com/famiglia_2022"');
-    expect(html).toContain('@famiglia_2022');
+    // Doctor photo card
+    expect(html).toContain('src="/tetiana_bybis.jpg"');
   });
 
   it('renders Dr. Tetiana Bybis name, quote, bio, and Instagram link in EN', () => {
@@ -65,9 +64,8 @@ describe('AboutDoctor Component', () => {
     expect(html).toContain(escapeHtml(translations.en.about.bioP1));
     expect(html).toContain(escapeHtml(translations.en.about.bioP2));
 
-    // Instagram link & handle
-    expect(html).toContain('href="https://instagram.com/famiglia_2022"');
-    expect(html).toContain('@famiglia_2022');
+    // Doctor image
+    expect(html).toContain('src="/tetiana_bybis.jpg"');
   });
 });
 

@@ -35,10 +35,11 @@ export const LocationFooter: React.FC = () => {
                 href="https://www.instagram.com/famiglia_2022"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-brand-base/10 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center text-brand-base transition-colors"
-                aria-label="Instagram"
+                className="inline-flex items-center space-x-2 px-3 py-2 rounded-full bg-brand-base/10 hover:bg-brand-gold hover:text-brand-dark text-brand-base transition-colors text-xs font-medium"
+                aria-label="Instagram @famiglia_2022"
               >
-                <InstagramIcon className="w-5 h-5" />
+                <InstagramIcon className="w-4 h-4" />
+                <span>@famiglia_2022</span>
               </a>
               <a
                 href="tel:+380960889889"
