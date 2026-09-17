@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -7,6 +7,13 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FAF8F5;
+    color: #1E1B18;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
   }
 }
 
@@ -56,11 +63,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FBF9F5;
+  background: #FAF8F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #EADFCF;
+  background: #EFEBE4;
   border-radius: 4px;
 }
 

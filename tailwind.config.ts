@@ -1,4 +1,4 @@
-﻿import type { Config } from 'tailwindcss';
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -9,13 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'brand-dark': '#2D241E',
-        'brand-gold': '#C5A880',
-        'brand-beige': '#F6F2EA',
-        'brand-bg': '#FBF9F5',
+        // Warm Medical Luxury Tokens
+        'brand-base': '#FAF8F5',
         'brand-surface': '#FFFFFF',
-        'brand-text-muted': '#6E6259',
-        // High-Tech Optics & 3D Redesign Tokens
+        'brand-dark': '#1E1B18',
+        'brand-muted': '#6E655F',
+        'brand-gold': '#C5A880',
+        'brand-gold-hover': '#B8976C',
+        'brand-sage': '#2D6A4F',
+        'brand-border': '#EFEBE4',
+        // Compatibility tokens
+        'brand-beige': '#F6F2EA',
+        'brand-bg': '#FAF8F5',
+        'brand-text-muted': '#6E655F',
+        // Optics tokens (preserved for compatibility during redesign)
         'optic-dark': '#151210',
         'optic-slate': '#1E1916',
         'optic-gold': '#D4AF37',
@@ -24,6 +31,19 @@ const config: Config = {
       fontFamily: {
         serif: ['Playfair Display', 'Georgia', 'serif'],
         sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'shimmer-spin': 'shimmer-spin 3s linear infinite',
+      },
+      keyframes: {
+        'shimmer-spin': {
+          '0%': {
+            transform: 'translate(-50%, -50%) rotate(0deg)',
+          },
+          '100%': {
+            transform: 'translate(-50%, -50%) rotate(360deg)',
+          },
+        },
       },
     },
   },
