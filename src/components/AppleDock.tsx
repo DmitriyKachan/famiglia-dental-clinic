@@ -31,7 +31,7 @@ export const AppleDock: React.FC<AppleDockProps> = ({
     <div className="fixed bottom-6 right-6 z-40 flex items-center space-x-3 pointer-events-auto font-hn">
       {/* Minimized Windows Pill */}
       {hasAnyMinimized && (
-        <div className="apple-glass rounded-full px-4 py-2 flex items-center space-x-3 border border-white/20 shadow-2xl apple-dock-bounce">
+        <div className="apple-glass rounded-full px-4 py-2 flex items-center space-x-3 border border-white/20 shadow-2xl apple-dock-glow">
           <div className="flex items-center space-x-1.5">
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
             <span className="text-[11px] uppercase tracking-wider text-cream/60">

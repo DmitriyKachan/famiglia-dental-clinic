@@ -47,7 +47,7 @@ describe('Apple LiquidGlass & Window Folding Suite', () => {
       </I18nProvider>
     );
 
-    expect(html).toContain('apple-dock-bounce');
+    expect(html).toContain('apple-dock-glow');
     expect(html).toContain('Згорнуто:');
     expect(html).toContain('Запис');
     expect(html).toContain('Послуги');
