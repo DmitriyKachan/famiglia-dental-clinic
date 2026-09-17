@@ -96,6 +96,167 @@
   animation: marqueeScroll 30s linear infinite;
 }
 
+/* MagicUI Shine Animation */
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.animate-shine {
+  animation: shine var(--duration, 10s) infinite linear;
+}
+
+/* Apple LiquidGlass & Optical Reflection Materials */
+.apple-glass {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(32px) saturate(190%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 30px 70px -12px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+}
+
+.apple-glass-card {
+  background: rgba(24, 24, 24, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 16px 40px -8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+  transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.apple-glass-card:hover {
+  background: rgba(30, 30, 30, 0.75);
+  border-color: rgba(197, 168, 128, 0.4);
+  box-shadow:
+    0 24px 50px -10px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(197, 168, 128, 0.12),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Apple Window Folding & Spring Dynamics */
+@keyframes appleSheetOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(40px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes appleWindowFold {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85) translateY(120px);
+    filter: blur(12px);
+  }
+}
+
+@keyframes appleDockBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.apple-window-anim {
+  animation: appleSheetOpen 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.apple-window-fold {
+  animation: appleWindowFold 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.apple-dock-bounce {
+  animation: appleDockBounce 2s ease-in-out infinite;
+}
+
+/* Apple macOS Traffic Light Dots */
+.apple-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.apple-dot-close {
+  background-color: #ff5f56;
+  border: 1px solid rgba(224, 68, 62, 0.6);
+  box-shadow: 0 0 8px rgba(255, 95, 86, 0.4);
+}
+
+.apple-dot-minimize {
+  background-color: #ffbd2e;
+  border: 1px solid rgba(222, 161, 35, 0.6);
+  box-shadow: 0 0 8px rgba(255, 189, 46, 0.4);
+}
+
+.apple-dot-maximize {
+  background-color: #27c93f;
+  border: 1px solid rgba(40, 170, 57, 0.6);
+  box-shadow: 0 0 8px rgba(39, 201, 63, 0.4);
+}
+
+.apple-dot:hover::after {
+  opacity: 1;
+}
+
+.apple-dot-close::after {
+  content: "×";
+  font-size: 11px;
+  line-height: 1;
+  color: #4c0000;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.apple-dot-minimize::after {
+  content: "–";
+  font-size: 10px;
+  line-height: 1;
+  color: #5c3b00;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.apple-dot-maximize::after {
+  content: "+";
+  font-size: 11px;
+  line-height: 1;
+  color: #004d11;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .anim-fade-in,
   .anim-rise-in,

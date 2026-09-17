@@ -7,12 +7,14 @@ import { useI18n } from '@/lib/i18n/context';
 interface EditorialBookingModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onMinimize?: () => void;
   preselectedService?: string;
 }
 
 export const EditorialBookingModal: React.FC<EditorialBookingModalProps> = ({
   isOpen,
   onClose,
+  onMinimize,
   preselectedService = '',
 }) => {
   const { t, locale } = useI18n();
@@ -70,23 +72,55 @@ export const EditorialBookingModal: React.FC<EditorialBookingModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6 font-hn">
-      {/* Backdrop */}
+      {/* Backdrop with optical blur */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+        className="fixed inset-0 bg-black/75 backdrop-blur-xl transition-opacity duration-300"
       />
 
-      {/* Modal Card */}
-      <div className="relative w-full max-w-lg bg-[#141414] text-cream border border-cream/20 shadow-2xl rounded-2xl p-6 sm:p-8 z-10">
-        {/* Close button */}
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute right-5 top-5 text-cream/60 hover:text-cream transition-colors cursor-pointer"
-          aria-label="Close booking modal"
-        >
-          <X size={24} strokeWidth={1.5} />
-        </button>
+      {/* Apple LiquidGlass Modal Window */}
+      <div className="relative w-full max-w-lg apple-glass rounded-3xl p-6 sm:p-8 z-10 apple-window-anim">
+        {/* Apple macOS Traffic Lights Window Titlebar */}
+        <div className="flex items-center justify-between pb-5 mb-5 border-b border-white/10">
+          <div className="flex items-center space-x-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="apple-dot apple-dot-close cursor-pointer"
+              title={locale === 'ua' ? 'Закрити вікно' : 'Close window'}
+              aria-label="Close modal"
+            />
+            <button
+              type="button"
+              onClick={onMinimize || onClose}
+              className="apple-dot apple-dot-minimize cursor-pointer"
+              title={locale === 'ua' ? 'Згорнути в Dock' : 'Minimize to Dock'}
+              aria-label="Minimize modal"
+            />
+            <button
+              type="button"
+              onClick={() => {}}
+              className="apple-dot apple-dot-maximize cursor-default opacity-80"
+              title="Expand"
+              aria-label="Expand"
+            />
+          </div>
+
+          <div className="text-xs uppercase tracking-[0.18em] text-cream/40 font-light flex items-center space-x-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+            <span>Famiglia Booking</span>
+          </div>
+
+          {/* Quick close icon */}
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-cream/40 hover:text-cream transition-colors cursor-pointer"
+            aria-label="Close"
+          >
+            <X size={18} strokeWidth={1.5} />
+          </button>
+        </div>
 
         {isSuccess ? (
           <div className="text-center py-8 space-y-4">

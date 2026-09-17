@@ -7,12 +7,14 @@ import { useI18n } from '@/lib/i18n/context';
 interface EditorialServicesDrawerProps {
   isOpen: boolean;
   onClose: () => void;
+  onMinimize?: () => void;
   onSelectService: (service: string) => void;
 }
 
 export const EditorialServicesDrawer: React.FC<EditorialServicesDrawerProps> = ({
   isOpen,
   onClose,
+  onMinimize,
   onSelectService,
 }) => {
   const { t, locale } = useI18n();
@@ -24,31 +26,61 @@ export const EditorialServicesDrawer: React.FC<EditorialServicesDrawerProps> = (
       {/* Backdrop */}
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-300"
+        className="absolute inset-0 bg-black/75 backdrop-blur-xl transition-opacity duration-300"
       />
 
-      {/* Slide-over Panel from Right */}
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-2xl bg-[#141414] text-cream border-l border-cream/20 shadow-2xl p-6 sm:p-10 flex flex-col justify-between overflow-y-auto">
+      {/* Slide-over Panel from Right styled as Apple LiquidGlass Sheet */}
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10 apple-window-anim">
+        <div className="w-screen max-w-2xl apple-glass text-cream border-l border-white/15 shadow-2xl p-6 sm:p-10 flex flex-col justify-between overflow-y-auto">
           <div>
-            {/* Header */}
-            <div className="flex items-center justify-between pb-6 border-b border-cream/15">
-              <div>
-                <span className="text-xs uppercase tracking-[0.2em] text-cream/50">
-                  {locale === 'ua' ? 'Напрямки лікування' : 'Clinical Directions'}
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-light text-cream mt-1">
-                  {t.services.title}
-                </h2>
+            {/* Apple Traffic Lights & Window Header */}
+            <div className="flex items-center justify-between pb-6 border-b border-white/10">
+              <div className="flex items-center space-x-2">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="apple-dot apple-dot-close cursor-pointer"
+                  title={locale === 'ua' ? 'Закрити' : 'Close'}
+                  aria-label="Close"
+                />
+                <button
+                  type="button"
+                  onClick={onMinimize || onClose}
+                  className="apple-dot apple-dot-minimize cursor-pointer"
+                  title={locale === 'ua' ? 'Згорнути в Dock' : 'Minimize to Dock'}
+                  aria-label="Minimize"
+                />
+                <button
+                  type="button"
+                  onClick={() => {}}
+                  className="apple-dot apple-dot-maximize cursor-default opacity-80"
+                  title="Expand"
+                  aria-label="Expand"
+                />
               </div>
+
+              <div className="text-xs uppercase tracking-[0.2em] text-cream/40 font-light">
+                {locale === 'ua' ? 'Напрямки лікування • Famiglia' : 'Clinical Portfolio • Famiglia'}
+              </div>
+
               <button
                 type="button"
                 onClick={onClose}
-                className="p-2 text-cream hover:opacity-70 transition-opacity cursor-pointer"
+                className="p-1.5 text-cream/50 hover:text-cream transition-colors cursor-pointer"
                 aria-label="Close services sheet"
               >
-                <X size={26} strokeWidth={1.5} />
+                <X size={20} strokeWidth={1.5} />
               </button>
+            </div>
+
+            {/* Title */}
+            <div className="mt-6">
+              <h2 className="text-2xl sm:text-3xl font-light text-cream">
+                {t.services.title}
+              </h2>
+              <p className="mt-2 text-sm text-cream/60 font-light">
+                {t.services.subtitle}
+              </p>
             </div>
 
             {/* Services List */}
