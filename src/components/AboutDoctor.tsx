@@ -75,45 +75,6 @@ export const AboutDoctor: React.FC = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Clinic Space Photo Card */}
-              <div className="relative rounded-2xl overflow-hidden bg-brand-surface border border-brand-border shadow-sm p-3">
-                <div className="relative h-48 rounded-xl overflow-hidden">
-                  <img
-                    src="/famiglia_clinic_interior.jpg"
-                    alt={locale === 'ua' ? 'Простір клініки Famiglia' : 'Famiglia Clinic Space'}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent" />
-
-                  <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2">
-                    <div>
-                      <p className="text-[11px] font-semibold text-brand-gold uppercase tracking-wider">
-                        {locale === 'ua' ? 'Простір клініки' : 'Clinic Space'}
-                      </p>
-                      <p className="text-xs font-medium text-white">
-                        {t.about.clinicAddress}
-                      </p>
-                    </div>
-
-                    {/* Instagram Badge */}
-                    <a
-                      href="https://instagram.com/famiglia_2022"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-brand-surface/95 backdrop-blur-xs border border-brand-border shadow-sm hover:shadow-md hover:scale-105 transition-all text-brand-dark shrink-0 cursor-pointer"
-                      aria-label="Instagram @famiglia_2022"
-                    >
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] flex items-center justify-center text-white">
-                        <InstagramIcon className="w-3 h-3" />
-                      </div>
-                      <span className="text-xs font-bold text-brand-dark">@famiglia_2022</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Right Column: Warm Narrative & Clinic Values */}
